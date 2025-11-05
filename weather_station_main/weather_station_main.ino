@@ -49,7 +49,7 @@ const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 19800; // GMT + 5hr 30min 
 const int   daylightOffset_sec = 0; // 0 for india
 
-String serverPath = "https://api.openweathermap.org/data/2.5/weather?q=Patiala,IN&units=metric&appid=a21084f64df1d054c7af8d3a29ae4b6d";
+String serverPath = "https://api.openweathermap.org/data/2.5/weather?q=Patiala,IN&units=metric&appid=<add your API key>";
 String jsonBuffer;
 
 // global variables that stores data fetched by update function
