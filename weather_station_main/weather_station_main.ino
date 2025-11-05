@@ -15,7 +15,7 @@ Connections :
                   SDA - GPIO21
                   my display doesnt have reset pin
                 ESP32 to button
-                  output to GPIO4
+                  output to GPIO2
   
 */
 #include <WiFi.h>
@@ -36,7 +36,7 @@ Connections :
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 
-const int buttonPin = 4;  // the number of the pushbutton pin
+const int buttonPin = 2;  // the number of the pushbutton pin
 int buttonState = 0; // to store HIGH and LOW states
 int displayMode = 0; // can be initilised to 0, 1 or 2
 
@@ -150,8 +150,8 @@ void updateData() {
   static unsigned long lastUpdate = 0;  // remembers last update time
   unsigned long currentMillis = millis();
 
-  // Only update if 30 seconds (30000 ms) have passed
-  if (currentMillis - lastUpdate >= 30000) {
+  // Only update if 10 seconds (10000 ms) have passed
+  if (currentMillis - lastUpdate >= 10000) {
     Serial.println("🔄 Updating time, date, and weather...");
     
     getLocalTime();
@@ -245,9 +245,9 @@ void setup() {
   Serial.println(WiFi.RSSI());
 
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
-  
-  display_startup();
   updateData();
+  display_startup();
+  
 }
 
 void loop() {
